@@ -1,0 +1,17 @@
+button:focus {
+    background-color: transparent !important;
+}
+.right {
+    margin-right: 30px;
+}
+.left {
+    margin-left: 30px;
+}
+.MuiPopover-paper-20 {
+    top: 65px !important;
+}
+@media only screen and (max-width: 992px) {
+.hide-on-med-and-down {
+    display: block !important;
+}
+}

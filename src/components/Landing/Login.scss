@@ -1,0 +1,42 @@
+.form {
+    margin: auto;
+    width:300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    .form-input {
+        display: block;
+    }
+    .button-signin-signup {
+        text-align: center;
+        button {
+            margin: 10px
+        }
+    }
+    .MuiOutlinedInput-notchedOutline-30 {
+        border-color: whitesmoke !important;
+        border-width: 2px !important;
+    }
+    .MuiFormLabel-focused-17 {
+        color: white !important;
+    }
+    .MuiInputLabel-outlined-15 {
+        color: white;
+    }
+    
+}
+input[type=text] {
+    width: 300px !important;
+    border-bottom: none !important;
+    height: 2.3rem !important;
+    margin: 10px;
+    &:focus:not([readonly]) {
+        border-bottom: none !important;
+        box-shadow: none !important;
+        margin: 10px;
+    }
+    
+}
+
