@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 // import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import api from '../../common/apiConnect';
+import { connect } from "react-redux";
+import { login } from "../../actions/authentication/authentication";
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -12,9 +14,7 @@ class Login extends Component {
     }
   }
 
-  login = async(input) => {
-    api.init()
-    const url = '/oauth/token';
+  loginMe = (input) => {
     const user = {
       grant_type: 'password',
       username: input.email,
@@ -22,19 +22,11 @@ class Login extends Component {
       client_id: 'client_id',
       client_secret:'my_secret'
     }
-    console.log(user)
-    const response = await api.post(url, user);
-    console.log("response"+response)
-    const isSet = await api.setHeaders(response.data.access_token);
-    if (isSet) {
-        window.localStorage.setItem('access_token', response.data.access_token);
-    }
-    console.log(response.data)
-    return response.data
-
+    this.props.login(user)
   }
 
   render() {
+    console.log(this.props.isAuthenticate)
     return (
       <div>
         
@@ -64,16 +56,24 @@ class Login extends Component {
           <Button variant="contained" color="primary" >
             SIGN UP
           </Button>
+
+          
         </div>
-        
-      </form>
-      <Button onClick={()=>this.login(this.state)} variant="contained" color="secondary" >
+        <Button onClick={()=>this.loginMe(this.state)} variant="contained" color="secondary" >
             SIGN IN
           </Button>
+      </form>
       </div>
     );
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticate: state.Authenticate.isAuthenticated,
+  }
+}
 
-export default Login;
+export default connect(mapStateToProps, {
+  login
+})(Login);
