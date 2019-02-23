@@ -18,7 +18,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticate: state.Authenticate.isAuthenticated,
+    isAuthenticated: state.Authenticate.isAuthenticated,
     user: state.Authenticate.user
   }
 }

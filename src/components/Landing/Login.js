@@ -18,7 +18,7 @@ class Login extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.isAuthenticate) {
+    if (nextProps.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
 
@@ -33,6 +33,9 @@ class Login extends Component {
       client_secret:'my_secret'
     }
     this.props.login(user);
+    if (this.props.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
 
   }
 
@@ -79,7 +82,7 @@ class Login extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticate: state.Authenticate.isAuthenticated,
+    isAuthenticated: state.Authenticate.isAuthenticated,
   }
 }
 

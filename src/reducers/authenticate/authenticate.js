@@ -8,6 +8,7 @@ let initialState ={
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case types.SET_CURRENT_USER:
+        console.log("check authrn "+ !isEmpty(action.currentUser))
             return {
                 ...state,
                 isAuthenticated:!isEmpty(action.currentUser),

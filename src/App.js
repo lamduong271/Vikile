@@ -7,7 +7,7 @@ import api from './common/apiConnect';
 import './App.scss';
 import {BrowserRouter, Route, Switch } from "react-router-dom";
 import store from './store';
-
+import ProtectRoute from './components/ProtectRoute/ProtectRoute';
 if (localStorage.access_token && localStorage.user) {
   api.setHeaders(localStorage.access_token);
   store.dispatch(setCurrentUser(JSON.parse(localStorage.user)))
@@ -20,7 +20,7 @@ class App extends Component {
       <BrowserRouter >
       <Switch>
 							<Route path="/" exact component={LoginView} />
-							<Route path="/dashboard" component={Dashboard} />
+							<ProtectRoute path="/dashboard" component={Dashboard} />
 			</Switch>
       </BrowserRouter>
       </div>
