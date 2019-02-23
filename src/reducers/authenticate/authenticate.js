@@ -10,7 +10,7 @@ const reducer = (state = initialState, action) => {
         case types.SET_CURRENT_USER:
             return {
                 ...state,
-                isAuthenticated:true,
+                isAuthenticated:!isEmpty(action.currentUser),
                 user: action.currentUser
             };
         default:
