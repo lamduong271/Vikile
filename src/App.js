@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import LoginView from './views/LoginView';
-// import NavBar from './components/Menu/NavBar';
+import Dashboard from './views/Dashboard'
+import { getCurrentUser, setCurrentUser } from './actions/authentication/authentication'
+import { connect } from "react-redux";
+import api from './common/apiConnect';
 import './App.scss';
 import {BrowserRouter, Route, Switch } from "react-router-dom";
+import store from './store';
+
+if (localStorage.access_token && localStorage.user) {
+  api.setHeaders(localStorage.access_token);
+  store.dispatch(setCurrentUser(JSON.parse(localStorage.user)))
+}
 
 class App extends Component {
   render() {
@@ -11,7 +20,7 @@ class App extends Component {
       <BrowserRouter >
       <Switch>
 							<Route path="/" exact component={LoginView} />
-							<Route path="/login" component={LoginView} />
+							<Route path="/dashboard" component={Dashboard} />
 			</Switch>
       </BrowserRouter>
       </div>

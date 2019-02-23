@@ -4,6 +4,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { connect } from "react-redux";
 import { login } from "../../actions/authentication/authentication";
+import {
+  withRouter
+} from 'react-router-dom';
 
 class Login extends Component {
   constructor(props) {
@@ -14,6 +17,13 @@ class Login extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isAuthenticate) {
+      this.props.history.push("/dashboard");
+    }
+
+  }
+
   loginMe = (input) => {
     const user = {
       grant_type: 'password',
@@ -22,14 +32,13 @@ class Login extends Component {
       client_id: 'client_id',
       client_secret:'my_secret'
     }
-    this.props.login(user)
+    this.props.login(user);
+
   }
 
   render() {
-    console.log(this.props.isAuthenticate)
     return (
       <div>
-        
       <form className="form">
        <TextField
           id="outlined-name"
@@ -76,4 +85,4 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   login
-})(Login);
+})(withRouter(Login));

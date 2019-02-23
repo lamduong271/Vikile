@@ -2,18 +2,10 @@
 @import './components/Landing/Login';
 
 body {
-  background-image: url('./image/heroimg.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+ 
 }
 .App {
-  text-align: center;
-  background: -moz-linear-gradient(45deg, rgba(0,33,61,0.82) 0%, rgba(125,185,232,0.84) 80%, rgba(255,255,255,0.84) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(45deg, rgba(0,33,61,0.82) 0%,rgba(125,185,232,0.84) 80%,rgba(255,255,255,0.84) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(45deg, rgba(0,33,61,0.82) 0%,rgba(125,185,232,0.84) 80%,rgba(255,255,255,0.84) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d100213d', endColorstr='#d6ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
+ }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -41,6 +33,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d100213d', e
   }
   to {
     transform: rotate(360deg);
+  }
+}
+.login_container {
+  background-image: url('./image/heroimg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  .login_filter {
+    text-align: center;
+    background: -moz-linear-gradient(45deg, rgba(0,33,61,0.82) 0%, rgba(125,185,232,0.84) 80%, rgba(255,255,255,0.84) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, rgba(0,33,61,0.82) 0%,rgba(125,185,232,0.84) 80%,rgba(255,255,255,0.84) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, rgba(0,33,61,0.82) 0%,rgba(125,185,232,0.84) 80%,rgba(255,255,255,0.84) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d100213d', endColorstr='#d6ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   }
 }
 

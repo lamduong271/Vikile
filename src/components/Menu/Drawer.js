@@ -58,7 +58,7 @@ const styles = theme => ({
     alignItems: 'center',
     padding: '0 8px',
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
   },
   content: {
     flexGrow: 1,
@@ -80,7 +80,7 @@ const styles = theme => ({
 
 class PersistentDrawerLeft extends React.Component {
   state = {
-    open: false,
+    open: true,
   };
 
   handleDrawerOpen = () => {
@@ -97,7 +97,7 @@ class PersistentDrawerLeft extends React.Component {
 
     return (
       <div className={classes.root}>
-        <CssBaseline />
+        
         <AppBar
           position="fixed"
           className={classNames(classes.appBar, {
@@ -128,6 +128,7 @@ class PersistentDrawerLeft extends React.Component {
           }}
         >
           <div className={classes.drawerHeader}>
+          <p>Lam Duong</p>
             <IconButton onClick={this.handleDrawerClose}>
               {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
             </IconButton>

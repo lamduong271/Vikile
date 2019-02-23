@@ -5,8 +5,10 @@ class LoginView extends Component {
   render() {
     console.log(process.env.REACT_APP_API_BASE_URL)
     return (
-      <div>
-       <Login></Login>
+      <div className="login_container">
+        <div className="login_filter">
+        <Login></Login>
+        </div>
       </div>
     );
   }

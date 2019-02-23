@@ -9,6 +9,7 @@
     "apollo-boost": "^0.1.23",
     "axios": "^0.18.0",
     "graphql": "^14.1.1",
+    "lodash": "^4.17.11",
     "materialize-css": "^1.0.0-rc.2",
     "mobx": "^5.8.0",
     "mobx-react": "^5.4.3",

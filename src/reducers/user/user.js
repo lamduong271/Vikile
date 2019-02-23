@@ -1,17 +1,16 @@
 import * as types from '../../constants/ActionTypes';
-import {isEmpty} from 'lodash';
 
 let initialState ={
-    isAuthenticated:false,
-    user:null
+    currentUser: null
 }
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.SET_CURRENT_USER:
+        case types.LOGIN:
+        console.log(action)
             return {
                 ...state,
                 isAuthenticated:true,
-                user: action.currentUser
+                user: action.userInfo
             };
         default:
             return {...state};
