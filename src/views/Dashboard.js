@@ -7,7 +7,7 @@ class Dashboard extends Component {
    
   }
   render() {
-    console.log("CURRENT USER ", this.props.user)
+    console.log("props.location.state", this.props.location)
     return (
       <div>
             <Drawer></Drawer>
