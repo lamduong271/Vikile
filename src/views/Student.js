@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import Drawer from '../components/Menu/Drawer';
 import { connect } from "react-redux";
-import MainDashboard from '../components/Dashboard/dashboard';
-
-class Dashboard extends Component {
-  componentDidMount() {
-   
-  }
+import StudentList from '../components/Student/StudentList'
+class Student extends Component {
   render() {
-    console.log("props.user", this.props.user)
+    console.log("props.location.state", this.props.location)
     return (
-       <Drawer title="Dashboard"><MainDashboard></MainDashboard></Drawer>
+        <Drawer title="Students">
+            <StudentList></StudentList>
+        </Drawer>
     );
   }
 }
@@ -22,4 +20,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, null)(Dashboard);
+export default connect(mapStateToProps, null)(Student);

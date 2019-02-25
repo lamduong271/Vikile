@@ -1,2 +1,5 @@
 export const LOGIN = "LOGIN";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
+
+//STUDENTS
+export const SET_ALL_STUDENTS = "SET_ALL_STUDENTS";

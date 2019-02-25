@@ -1,11 +1,13 @@
 @import './components/Menu/NavBar';
 @import './components/Landing/Login';
+@import './components/Student/AddStudentButton.scss';
+@import './components/Student/Student.scss';
 
 body {
  
 }
 .App {
- }
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
