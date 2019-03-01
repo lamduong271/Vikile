@@ -15,11 +15,17 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+// import InboxIcon from '@material-ui/icons/MoveToInbox';
 import Setting from '@material-ui/icons/Settings';
+import Activity from '@material-ui/icons/LocalActivity';
+import Face from '@material-ui/icons/Face';
+import Schedule from '@material-ui/icons/Schedule';
+import Child from '@material-ui/icons/ChildCare';
+import AccountCircle from '@material-ui/icons/ChildCare';
+import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-
+import {logout} from '../../actions/authentication/authentication'
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -92,6 +98,10 @@ class PersistentDrawerLeft extends React.Component {
     this.setState({ open: false });
   };
 
+  logCurrentUserOut = () => {
+    console.log("haha")
+  }
+
   render() {
     const { classes, theme } = this.props;
     const { open } = this.state;
@@ -136,21 +146,50 @@ class PersistentDrawerLeft extends React.Component {
           </div>
           <Divider />
           <List>
-            {['Activities', 'Sessions', 'Teachers', 'Students'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <Setting /> : <Setting />}</ListItemIcon>
-                <ListItemText primary={text} />
+
+              <Link to={'/dashboard'}>
+                <ListItem button>
+                  <ListItemIcon><Activity/></ListItemIcon>
+                  <ListItemText primary="Activities" />
+                </ListItem>
+              </Link>
+
+              <Link to={'/dashboard'}>
+              <ListItem button>
+                <ListItemIcon><Schedule/></ListItemIcon>
+                <ListItemText primary="Sessions" />
               </ListItem>
-            ))}
+              </Link>
+
+              <Link to={'/dashboard'}>
+              <ListItem button>
+                <ListItemIcon><Face/></ListItemIcon>
+                <ListItemText primary="Teachers" />
+              </ListItem>
+              </Link>
+              
+              <Link to={'/student'}>
+              <ListItem button>
+                <ListItemIcon><Child/></ListItemIcon>
+                <ListItemText primary="Students" />
+              </ListItem>
+              </Link>
+
           </List>
           <Divider />
           <List>
-            {['Settings', 'My profile', 'Log out'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <Setting /> : <Setting />}</ListItemIcon>
-                <ListItemText primary={text} />
+              <ListItem button>
+                <ListItemIcon><Setting/></ListItemIcon>
+                <ListItemText primary="My Profile" />
               </ListItem>
-            ))}
+              <ListItem button>
+                <ListItemIcon><AccountCircle/></ListItemIcon>
+                <ListItemText primary="Settings" />
+              </ListItem>
+              <ListItem button onClick={()=>this.props.logout()}>
+                <ListItemIcon><KeyboardReturn/></ListItemIcon>
+                <ListItemText primary="Log out" />
+              </ListItem>
           </List>
         </Drawer>
         <main
@@ -178,4 +217,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps)(withStyles(styles, { withTheme: true })(PersistentDrawerLeft));
+export default connect(mapStateToProps, {logout})(withStyles(styles, { withTheme: true })(PersistentDrawerLeft));

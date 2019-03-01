@@ -1,0 +1,19 @@
+.add_student_dialog {
+    
+    
+    &_content {
+        margin: 10px 30px 30px 30px;
+        form {
+            .MuiInput-root-213 {
+                width: 300px;
+            }
+        }
+    }
+    h6 {
+        padding: 10px;
+        border-bottom: 0.6px solid #424f965d;
+        color: #3f51b5;
+        font-weight: 700;
+
+    }
+}

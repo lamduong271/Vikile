@@ -7,6 +7,9 @@ import Fab from '@material-ui/core/Fab';
 const styles = theme => ({
     fab: {
       margin: theme.spacing.unit,
+      position: 'fixed !important',
+      bottom: '20px',
+      right: '20px',
     },
     extendedIcon: {
       marginRight: theme.spacing.unit,
@@ -15,13 +18,11 @@ const styles = theme => ({
 
 class AddStudentButton extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, openAddDialog } = this.props;
     return (
-        <div>
-        <Fab color="primary" aria-label="Add" className={classes.fab}>
+      <Fab onClick={openAddDialog} color="primary" aria-label="Add" className={classes.fab}>
         <AddIcon />
       </Fab>
-      </div>
     );
   }
 }

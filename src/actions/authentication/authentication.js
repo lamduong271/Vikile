@@ -16,6 +16,12 @@ export const login = userInfo  => async dispatch =>{
    
 };
 
+export const logout = () => dispatch =>{
+    window.localStorage.clear(); 
+    dispatch(setCurrentUser(null));
+
+};
+
 export const getCurrentUser = username  => async dispatch =>{
     const url = `/api/users?username=${username}`;
     const response = await api.get(url);

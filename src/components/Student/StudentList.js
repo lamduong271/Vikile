@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getStudents } from '../../actions/students/students';
 import Student from './Student';
 import AddStudentButton from './AddStudentButton';
-
+import AddStudentDialog from './AddStudentDialog';
 class StudentList extends Component {
 
   componentDidMount() {
@@ -22,6 +22,7 @@ class StudentList extends Component {
       <div>
        { allStudents ? this.renderAllStudents(allStudents) : '' }
        <AddStudentButton></AddStudentButton>
+       <AddStudentDialog></AddStudentDialog>
       </div>
     );
   }
