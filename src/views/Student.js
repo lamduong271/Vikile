@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import StudentList from '../components/Student/StudentList'
 class Student extends Component {
   render() {
-    console.log("props.location.state", this.props.location)
     return (
         <Drawer title="Students">
             <StudentList></StudentList>

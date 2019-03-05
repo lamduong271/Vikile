@@ -12,4 +12,38 @@
         justify-content: space-between;
       }
     }
+    .action_student {
+      position: relative;
+      .edit_student {
+        position: absolute;
+        right:0;
+        top:-45px;
+        button {
+          min-height: 30px !important;
+          width: 30px !important;
+          height: 30px !important;
+          background-color: rgba(255, 196, 2, 0.945) !important;
+          svg {
+            width: 0.8em !important;
+            height: 0.8em !important;
+          }
+
+        }
+      }
+      .delete_student {
+        position: absolute;
+        right: 0px;
+        top:-85px;
+        button {
+          min-height: 30px !important;
+          width: 30px !important;
+          height: 30px !important;
+          background-color: rgb(238, 98, 4) !important;
+          svg {
+            width: 0.8em !important;
+            height: 0.8em !important;
+          }
+        }
+      }
+    }
 }

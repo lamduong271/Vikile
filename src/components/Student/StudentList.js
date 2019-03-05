@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getStudents } from '../../actions/students/students';
+import { getAllTeachers } from '../../actions/teachers/teacher';
+
 import Student from './Student';
 import AddStudentButton from './AddStudentButton';
 import AddStudentDialog from './AddStudentDialog';
@@ -8,6 +10,8 @@ class StudentList extends Component {
 
   componentDidMount() {
     this.props.getStudents();
+    this.props.getAllTeachers();
+
   }
 
   renderAllStudents = (students) => {
@@ -16,13 +20,12 @@ class StudentList extends Component {
     ))
   }
   render() {
-    const { allStudents } = this.props;
-    console.log(allStudents)
+    const { allStudents, allTeachers } = this.props;
     return (
       <div>
        { allStudents ? this.renderAllStudents(allStudents) : '' }
        <AddStudentButton></AddStudentButton>
-       <AddStudentDialog></AddStudentDialog>
+       <AddStudentDialog allTeachers={allTeachers?allTeachers:{}}></AddStudentDialog>
       </div>
     );
   }
@@ -30,8 +33,9 @@ class StudentList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    allStudents: state.Students.allStudents
+    allStudents: state.Students.allStudents,
+    allTeachers: state.Teachers.allTeachers
   }
 }
 
-export default connect(mapStateToProps, {getStudents})(StudentList);
+export default connect(mapStateToProps, {getStudents,getAllTeachers})(StudentList);

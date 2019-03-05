@@ -25,7 +25,6 @@ export const logout = () => dispatch =>{
 export const getCurrentUser = username  => async dispatch =>{
     const url = `/api/users?username=${username}`;
     const response = await api.get(url);
-    console.log("response ", response)
     if(response.data.success) {
         console.log("successss")
         dispatch(setCurrentUser(response.data.message));

@@ -1,11 +1,15 @@
 .add_student_dialog {
-    
-    
     &_content {
-        margin: 10px 30px 30px 30px;
+        margin: 0px 30px 0px 30px;
         form {
-            .MuiInput-root-213 {
-                width: 300px;
+
+        margin: 10px 30px 30px 30px;
+            textarea, select, input.select_student_cate {
+                width:300px !important;
+            }
+            .MuiFormControl-root-191 {
+                display: block;
+                margin-top: 20px;
             }
         }
     }

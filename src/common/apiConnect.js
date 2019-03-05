@@ -4,7 +4,6 @@ const api = {
     init() {
         axios.defaults.baseURL = 'http://localhost:4000';
         const token = localStorage.getItem('access_token');
-        console.log(token)
         if (token) {
             console.log('found access token, use it');
             this.setHeaders(token);
@@ -12,7 +11,6 @@ const api = {
     },
 
     setHeaders(token) {
-        console.log(token)
         return new Promise((resolve, reject) => {
             if (token) {
                 axios.defaults.headers.common.Authorization = `Bearer ${token}`;

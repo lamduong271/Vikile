@@ -1,15 +1,14 @@
 import * as types from '../../constants/ActionTypes';
 
 let initialState ={
-    currentUser: null
+    allTeachers: null
 }
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.LOGIN:
+        case types.SET_ALL_TEACHERS:
             return {
                 ...state,
-                isAuthenticated:true,
-                user: action.userInfo
+                allTeachers:action.allTeachers,
             };
         default:
             return {...state};

@@ -8,7 +8,6 @@ class Dashboard extends Component {
    
   }
   render() {
-    console.log("props.user", this.props.user)
     return (
        <Drawer title="Dashboard"><MainDashboard></MainDashboard></Drawer>
     );

@@ -10,13 +10,15 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-
+import {isEmpty} from 'lodash';
+import { connect } from "react-redux";
+import { addStudent } from '../../actions/students/students';
 const styles = theme => ({
     container: {
     },
     formControl: {
         margin: theme.spacing.unit,
-        minWidth: 160
+        minWidth: 130,
     },
     textField: {
       marginLeft: theme.spacing.unit,
@@ -46,7 +48,8 @@ class AddStudentDialog extends Component {
             first_name:'',
             last_name:'',
             teacher:'',
-            age:''
+            age:'',
+            gender:''
         };
     }
   handleClickOpen = () => {
@@ -57,12 +60,22 @@ class AddStudentDialog extends Component {
     this.setState({ open: false });
   };
 
+  renderTeacherNames = (teachers) => {
+    return teachers.map(teacher => (
+        <MenuItem value={teacher._id} key={teacher._id}>{teacher.first_name} {teacher.last_name}</MenuItem>
+    ))
+  }
+
+  handleAddStudent = (e, newStudent) => {
+      this.props.addStudent(newStudent);
+      this.setState({ open: false });
+  }
+
   
 
   render() {
-    const { classes } = this.props;
-    const {first_name, last_name, teacher} = this.state;
-
+    const { classes, allTeachers } = this.props;
+    const {first_name, last_name, teacher, gender, age} = this.state;
     return (
       <div>
         <AddStudentButton variant="outlined" color="primary" openAddDialog={()=>this.handleClickOpen()}>
@@ -98,6 +111,29 @@ class AddStudentDialog extends Component {
             margin="normal"
             />
 
+            <TextField
+            id="standard-textarea"
+            label="Age"
+            placeholder="Placeholder"
+            multiline
+            className={classes.textField}
+            value={age}
+            onChange={(event) => this.setState({age: event.target.value})}
+            margin="normal"
+            />
+
+            <FormControl className={classes.formControl}>
+            <InputLabel>Gender</InputLabel>
+            <Select
+                value={gender}
+                onChange={(event) => this.setState({gender: event.target.value})}
+                name="gender"
+                >
+                <MenuItem value="Female">Female</MenuItem>
+                <MenuItem value="Male">Male</MenuItem>
+            </Select>
+            </FormControl>
+            
             <FormControl className={classes.formControl}>
             <InputLabel>Teacher</InputLabel>
             <Select
@@ -105,19 +141,15 @@ class AddStudentDialog extends Component {
                 onChange={(event) => this.setState({teacher: event.target.value})}
                 name="teacher"
                 >
-                <MenuItem value="">
-                <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Kirsi</MenuItem>
-                <MenuItem value={20}>Jukka</MenuItem>
-                <MenuItem value={30}>Juha</MenuItem>
-                <MenuItem value={30}>Juhani</MenuItem>
-
+                {!isEmpty(allTeachers) ? this.renderTeacherNames(allTeachers) : ''}
             </Select>
             </FormControl>
             <br/>
-            <Button variant="outlined" color="primary" className={classes.button}>
+            <Button onClick={(e)=>this.handleAddStudent(e,this.state)} variant="outlined" color="primary" className={classes.button}>
                 Submit
+            </Button>
+            <Button onClick={()=>this.setState({open:false})} variant="outlined"  className={classes.button}>
+                Cancle
             </Button>
             </form>
             </div>
@@ -130,5 +162,11 @@ class AddStudentDialog extends Component {
 AddStudentDialog.propTypes = {
     classes: PropTypes.object.isRequired,
   };
+
   
-  export default withStyles(styles)(withMobileDialog()(AddStudentDialog));
+const mapStateToProps = (state) => {
+    return {
+      allTeachers: state.Teachers.allTeachers
+    }
+}
+export default connect(mapStateToProps,{ addStudent })(withStyles(styles)(withMobileDialog()(AddStudentDialog)));
